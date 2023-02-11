@@ -13,7 +13,7 @@
 - Render your UI with actual API data.
 - Make Search functionality work.
 - Make a Login Logout button that  toggles with a state.
->  Note: Please enable CORS on your browser before accessing the FoodFire application. Download the Allow CORS chrome extension. 
+>  Note: Please enable CORS on your browser before accessing the Apni Rasoi application. Download the Allow CORS chrome extension. 
 
 
 
