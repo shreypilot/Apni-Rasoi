@@ -14,3 +14,7 @@
   --orange: #d97919;
   --light-red: rgb(236, 56, 56);
 }
+
+.App{
+  margin: 10px 20px 0px 20px;
+}

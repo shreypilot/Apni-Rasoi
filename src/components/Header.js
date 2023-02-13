@@ -1,32 +1,43 @@
 import { useState } from "react";
-import Rasoi from "./Images/Rasoi.jpg";
+import Rasoi from "./assets/Images/Rasoi.jpg";
+import { Link } from "react-router-dom";
 import "./Header.css";
+import { useNavigate } from "react-router-dom";
+
 
 // Title component for display logo
 const Title = () => (
-  <a href="/">
+  <Link to="/">
     <img
       className="logo"
       src={Rasoi}
       alt="Rasoi logo"
       title="Apni Rasoi"
     />
-  </a>
+  </Link>
 );
 
 // Header component for header section: Logo, Nav Items
 const Header = () => {
   // use useState for user logged in or logged out
   const [isLoggedin, setIsLoggedin] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <div className="header">
       <Title />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <Link to="/">
+             <li>Home</li>
+          </Link>
+          <Link to="/About">
+             <li>About</li>
+          </Link>
+          <Link to="/Contact">
+             <li>Contact</li>
+          </Link>
+          
           <li>
             <i className="fa-solid fa-cart-shopping"></i>
           </li>
@@ -40,7 +51,7 @@ const Header = () => {
                 Logout
               </button>
             ) : (
-              <button className="login-btn" onClick={() => setIsLoggedin(true)}>
+              <button className="login-btn" onClick={() => navigate("/login")}>
                 Login
               </button>
             )}

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"; /* This is named export */
 import Shimmer from "./Shimmer"; /* This is default export */
 import { swiggy_api_URL } from "../constants";
 import "./Body.css";
-
+import { Link } from "react-router-dom";
 
 // Filter the restaurant data according input type
 function filterData(searchText, restaurants) {
@@ -22,6 +22,7 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  
 
   // use useEffect for one time call getRestaurants using empty dependency array
   useEffect(() => {
@@ -91,7 +92,10 @@ const Body = () => {
           {/* We are mapping restaurants array and passing JSON array data to RestaurantCard component as props with unique key as restaurant.data.id */}
           {filteredRestaurants.map((restaurant) => {
             return (
-              <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+              <Link to={"/restaurant/" + restaurant.data.id}>
+                  <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+              </Link>
+              
             );
           })}
         </div>
