@@ -1,3 +1,10 @@
+
+### **Live Project App Link**
+ Open [an Apni Rasoi App from scratch using React.js"](http://localhost:3002) to view it in your browser.
+
+
+
+
 ### **Namaste React Course by Akshay Saini**
 
 # **Chapter 06 - Exploring the world**
@@ -31,3 +38,6 @@
 ## **References:**
 
 - [Akshay Saini Code Link](https://bitbucket.org/namastedev/namaste-react-live/src/master/)
+
+
+
