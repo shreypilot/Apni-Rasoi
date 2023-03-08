@@ -1,5 +1,3 @@
-
-
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react"; /* This is named export */
 import Shimmer from "./Shimmer"; /* This is default export */
@@ -50,7 +48,9 @@ const Body = () => {
       setFilteredRestaurants(data);
       setErrorMessage("");
       if (data.length === 0) {
-        setErrorMessage("No matches restaurant found");
+        setErrorMessage(
+          `Sorry, we couldn't find any results for "${searchText}"`
+        );
       }
     } else {
       setErrorMessage("");
@@ -70,7 +70,11 @@ const Body = () => {
           placeholder="Search a restaurant you want..."
           value={searchText}
           // update the state variable searchText when we typing in input box
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={(e) =>{
+            setSearchText(e.target.value)
+            searchData(e.target.value, allRestaurants);
+          } 
+        }
         ></input>
         <button
           className="search-btn"
@@ -88,7 +92,7 @@ const Body = () => {
       {allRestaurants?.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="restaurant-list">
+        <div className="flex flex-wrap p-4 m-4 justify-between space-y-4">
           {/* We are mapping restaurants array and passing JSON array data to RestaurantCard component as props with unique key as restaurant.data.id */}
           {filteredRestaurants.map((restaurant) => {
             return (

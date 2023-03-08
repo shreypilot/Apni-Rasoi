@@ -4,6 +4,11 @@ export const IMG_CDN_URL =
 
 // Swiggy url to get Restaurant data
 export const swiggy_api_URL =
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING";
+//menu url of each restaurant
+export const FETCH_MENU_URL ="https://www.swiggy.com/dapi/menu/v4/full?lat=25.2520964&lng=86.9841546&menuId=";
 
-export const shimmer_card_unit = 8;
+export const ITEM_IMG_CDN_URL =
+  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
+  
+export const shimmer_card_unit = 10;

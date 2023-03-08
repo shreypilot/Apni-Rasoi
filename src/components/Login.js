@@ -42,11 +42,11 @@ const navigate = useNavigate();
               handleBlur,
               handleSubmit,
             }) => (
-              <div className="login">
-                <div className="form">
+              <div className=" flex flex-col mt-24 ml-96 my-auto box-border border-black  items-center justify-center bg-blue-400 border-8 w-96 h-96 shadow-md  ">
+                <div className="flex flex-col text-center  relative px-6 py-10">
                {/* Passing handleSubmit parameter tohtml form onSubmit property */}
                   <form noValidate onSubmit={handleSubmit}>
-                    <span>Login</span>
+                    <h1 className="text-black font-bold  uppercase" >Login</h1>
                   {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
                     <input
                       type="email"
@@ -55,7 +55,7 @@ const navigate = useNavigate();
                       onBlur={handleBlur}
                       value={values.email}
                       placeholder="Enter email id / username"
-                      className="form-control inp_text"
+                      className=" w-72 p-4 mt-24 border border-black "
                       id="email"
                     />
                     {/* If validation is not passed show errors */}
@@ -70,14 +70,14 @@ const navigate = useNavigate();
                       onBlur={handleBlur}
                       value={values.password}
                       placeholder="Enter password"
-                      className="form-control"
+                      className="m-2 p-4 w-72 border border-black "
                     />
                      {/* If validation is not passed show errors */}
                     <p className="error">
                       {errors.password && touched.password && errors.password}
                     </p>
                     {/* Click on submit button to submit the form */}
-                    <button type="submit">Login</button>
+                    <button type="submit" className="bg-green-800 p-2 m-2 w-24 uppercase text-white rounded-sm">Login</button>
                   </form>
                 </div>
               </div>
