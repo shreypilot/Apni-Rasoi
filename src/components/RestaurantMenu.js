@@ -3,22 +3,22 @@ import { useParams} from "react-router-dom";
 import { IMG_CDN_URL} from "../constants";
 import Shimmer from "./Shimmer"
 import { ITEM_IMG_CDN_URL} from "../constants";
+import { addItem } from "../utils/CartSlice";
+import { useDispatch } from "react-redux";
+import useRestaurant from "../utils/useRestaurant";
 
 
 
 const RestaurantMenu = () => {
    const {resId} = useParams();
-   const [restaurant,setRestaurant] = useState(null);
-   useEffect(() => {
-    getRestaurantsInfo();
-   },[]);
+   const restaurant = useRestaurant(resId);
 
-   async function getRestaurantsInfo() {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/v4/full?lat=25.2520964&lng=86.9841546&menuId="+ resId);
-        const json = await data.json();
-        console.log(json.data);
-        setRestaurant(json.data);
-   }
+    const dispatch = useDispatch();
+
+    const addFoodItem = (item) => {
+    dispatch(addItem(item));
+  };
+
    return !restaurant ? (
     <Shimmer />
    ) : (
@@ -77,7 +77,9 @@ const RestaurantMenu = () => {
                           alt={item?.name}
                         />
                       )}
-                      <button className="add-btn"> ADD +</button>
+                      <button 
+                        className="p-1 bg-green-50"
+                        onClick={() => addFoodItem(item)}> ADD +</button>
                       <br/>
                     </div>
                   </div>

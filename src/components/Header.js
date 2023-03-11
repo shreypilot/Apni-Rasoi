@@ -3,7 +3,8 @@ import Rasoi from "./assets/Images/Rasoi.jpg";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from "react-router-dom";
-import useOnline from "./utils/useOnline";
+import useOnline from "../utils/useOnline";
+import { useSelector } from "react-redux";
 
 
 
@@ -26,6 +27,9 @@ const Header = () => {
   const isOnline = useOnline();
   const navigate = useNavigate();
 
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
+
   return (
     <div className="flex justify-between h-20 bg-white shadow-lg">
       <Title />
@@ -40,10 +44,12 @@ const Header = () => {
           <Link to="/Contact">
              <li>Contact</li>
           </Link>
+          <Link to="/cart">
+             <li>
+            <ShoppingCartIcon />{cartItems.length}
+            </li>
+          </Link>
           
-          <li>
-            <ShoppingCartIcon />
-          </li>
           <h1 className="cursor-pointer" >{isOnline ? "✅" : "🔴"}</h1>
 
           <li className=" ">

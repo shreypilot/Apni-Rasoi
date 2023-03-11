@@ -4,14 +4,9 @@ import Shimmer from "./Shimmer"; /* This is default export */
 import { swiggy_api_URL } from "../constants";
 import "./Body.css";
 import { Link } from "react-router-dom";
+import { RxCross2 } from 'react-icons/rx';
+import { filterData } from "../utils/helper";
 
-// Filter the restaurant data according input type
-function filterData(searchText, restaurants) {
-  const filterData = restaurants.filter((restaurant) =>
-    restaurant?.data?.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-  return filterData;
-}
 
 // Body Component for body section: It contain all restaurant cards
 const Body = () => {
@@ -58,6 +53,11 @@ const Body = () => {
     }
   };
 
+  const handleClear = () => {
+    setSearchText("");
+    setFilteredRestaurants(allRestaurants);
+  };
+  
   // if allRestaurants is empty don't render restaurants cards
   if (!allRestaurants) return null;
 
@@ -76,6 +76,11 @@ const Body = () => {
           } 
         }
         ></input>
+        {searchText && (
+          <button className="clear-btn"  onClick={handleClear}>
+            < RxCross2 />
+          </button>
+        )}
         <button
           className="search-btn"
           onClick={() => {
@@ -85,6 +90,7 @@ const Body = () => {
         >
           Search
         </button>
+        
       </div>
       {errorMessage && <div className="error-container">{errorMessage}</div>}
 

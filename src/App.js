@@ -1,30 +1,35 @@
-import React from 'react';
+
 import ReactDOM from 'react-dom/client';
 import './App.css';
 import { Provider } from "react-redux";
-
-import Error from "./components/Error"
-import About from "./components/About";
-import Contact from "./components/Contact";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import Error from "./components/Error";
+import Profile from "./components/ProfileClass";
+import store from "./utils/store";
+import Contact from "./components/Contact";
 import Login from "./components/Login";
-import Profile from './components/ProfileClass';
-
 import RestaurantMenu from './components/RestaurantMenu';
-
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // for routing our page import createBrowserRouter and RouterProvider for providing router & Outlet for children component for nested routing
+import Shimmer from "./components/Shimmer";
+
+const Cart = lazy(() => import("./components/Cart"));
+const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
     return (
-      <React.Fragment>
+      <Provider store={store}>
+      
         <Header />
         <Outlet />
         <Footer />
-      </React.Fragment>
-    );
-  };
+      
+    </Provider>
+  );
+};
+   
 
 const appRouter = createBrowserRouter([
     {
@@ -39,7 +44,11 @@ const appRouter = createBrowserRouter([
         },
         {
           path: "about",
-          element: <About />,
+          element: (
+            <Suspense fallback={<h1>Loading....</h1>}>
+              <About />
+            </Suspense>
+          ),
           children: [{ // nested routing
             path: "profile",
             element: <Profile />,
@@ -53,6 +62,15 @@ const appRouter = createBrowserRouter([
           path: "restaurant/:resId",
           element: <RestaurantMenu />,
         },
+        {
+          path: "/cart",
+          element: (
+            <Suspense fallback={<Shimmer />}>
+              <Cart />
+            </Suspense>
+          ),
+        },
+        
       ],
     },
     {

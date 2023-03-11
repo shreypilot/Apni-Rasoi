@@ -1,4 +1,4 @@
-import { FETCH_MENU_URL } from "../../constants";
+import { FETCH_MENU_URL } from "../constants";
 import { useState , useEffect } from "react";
 
 const useRestaurant = (resId) => {
