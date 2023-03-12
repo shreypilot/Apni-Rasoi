@@ -34,35 +34,35 @@ const Header = () => {
     <div className="flex justify-between h-20 bg-white shadow-lg">
       <Title />
       <div className="py-8">
-        <ul className="flex justify-evenly space-x-4 font-bold text-gray-700 ">
+        <ul className="flex justify-evenly space-x-4 font-bold text-gray-700  ">
           <Link to="/">
-             <li className="">Home</li>
+             <li className="hover:bg-orange-500 hover:text-white w-16 h-8 p-2 rounded-md">Home</li>
           </Link>
           <Link to="/About">
-             <li>About</li>
+             <li className="hover:bg-orange-500  hover:text-white w-16 h-8 p-2 rounded-md">About</li>
           </Link>
           <Link to="/Contact">
-             <li>Contact</li>
+             <li className="hover:bg-orange-500  hover:text-white w-16 h-8 p-2  rounded-md">Contact</li>
           </Link>
           <Link to="/cart">
-             <li>
+             <li className="hover:bg-orange-500  hover:text-white w-12 h-8 p-1 rounded-md">
             <ShoppingCartIcon />{cartItems.length}
             </li>
           </Link>
           
-          <h1 className="cursor-pointer" >{isOnline ? "✅" : "🔴"}</h1>
+          <h1 className="cursor-pointer p-2" >{isOnline ? "✅" : "🔴"}</h1>
 
-          <li className=" ">
+          <li className="">
             {/* use conditional rendering for login and logout */}
             {isLoggedin ? (
               <button
-                className="logout-btn"
+                className="hover:bg-red-500  hover:text-white bg-green-500 w-16 h-8 m-1 p-2 rounded-md "
                 onClick={() => setIsLoggedin(false)}
               >
                 Logout
               </button>
             ) : (
-              <button className="login-btn" onClick={() => navigate("/login")}>
+              <button className="hover:bg-green-600  hover:text-white w-16 h-8  p-2 rounded-md " onClick={() => navigate("/login")}>
                 Login
               </button>
             )}

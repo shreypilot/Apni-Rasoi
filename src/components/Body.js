@@ -3,10 +3,11 @@ import { useEffect, useState } from "react"; /* This is named export */
 import Shimmer from "./Shimmer"; /* This is default export */
 import { swiggy_api_URL } from "../constants";
 import "./Body.css";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
 import { RxCross2 } from 'react-icons/rx';
 import { filterData } from "../utils/helper";
-
+import useOnline from "../utils/useOnline";
+import OfflinePage from './OfflinePage';
 
 // Body Component for body section: It contain all restaurant cards
 const Body = () => {
@@ -15,7 +16,9 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  
+  const isOnline = useOnline();
+  const navigate = useNavigate();
+
 
   // use useEffect for one time call getRestaurants using empty dependency array
   useEffect(() => {
@@ -63,55 +66,60 @@ const Body = () => {
 
   return (
     <>
-      <div className="search-container">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search a restaurant you want..."
-          value={searchText}
-          // update the state variable searchText when we typing in input box
-          onChange={(e) =>{
-            setSearchText(e.target.value)
-            searchData(e.target.value, allRestaurants);
-          } 
-        }
-        ></input>
-        {searchText && (
-          <button className="clear-btn"  onClick={handleClear}>
-            < RxCross2 />
-          </button>
-        )}
-        <button
-          className="search-btn"
-          onClick={() => {
-            // user click on button searchData function is called
-            searchData(searchText, allRestaurants);
-          }}
-        >
-          Search
-        </button>
+      
         
-      </div>
-      {errorMessage && <div className="error-container">{errorMessage}</div>}
-
-      {/* if restaurants data is not fetched then display Shimmer UI after the fetched data display restaurants cards */}
-      {allRestaurants?.length === 0 ? (
-        <Shimmer />
-      ) : (
-        <div className="flex flex-wrap p-4 m-4 justify-between space-y-4">
-          {/* We are mapping restaurants array and passing JSON array data to RestaurantCard component as props with unique key as restaurant.data.id */}
-          {filteredRestaurants.map((restaurant) => {
-            return (
-              <Link to={"/restaurant/" + restaurant.data.id}>
-                  <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
-              </Link>
-              
-            );
-          })}
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search a restaurant you want..."
+            value={searchText}
+            // update the state variable searchText when we typing in input box
+            onChange={(e) =>{
+              setSearchText(e.target.value)
+              searchData(e.target.value, allRestaurants);
+            } 
+          }
+          ></input>
+          {searchText && (
+            <button className="clear-btn"  onClick={handleClear}>
+              < RxCross2 />
+            </button>
+          )}
+          <button
+            className="search-btn"
+            onClick={() => {
+              // user click on button searchData function is called
+              searchData(searchText, allRestaurants);
+            }}
+          >
+            Search
+          </button>
+          
         </div>
-      )}
+        {errorMessage && <div className="error-container">{errorMessage}</div>}
+
+        {/* if restaurants data is not fetched then display Shimmer UI after the fetched data display restaurants cards */}
+        {allRestaurants?.length === 0 ? (
+          <Shimmer />
+        ) : (
+          <div className="flex flex-wrap p-4 m-4 justify-between space-y-4">
+            {/* We are mapping restaurants array and passing JSON array data to RestaurantCard component as props with unique key as restaurant.data.id */}
+            {filteredRestaurants.map((restaurant) => {
+              return (
+                <Link to={"/restaurant/" + restaurant.data.id}>
+                    <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+                </Link>
+                
+              );
+            })}
+          </div>
+        )}
+        
     </>
-  );
-};
+      
+    );
+    
+  };
 
 export default Body;

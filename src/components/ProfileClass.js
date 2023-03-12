@@ -1,47 +1,50 @@
-import React, { Component } from 'react'
+import { Component } from "react";
+import ProfileUserClass from "./ProfileUserClass";
+import { Github_API_User, Github_UserName, options } from "../constants";
 
-export class ProfileClass extends Component {
-  constructor(){//create a constructor
-    super();
-    this.state = {//createa state variable inside child
-      userInfo:{
-        name:"shreya",
-        Location: "bangalore",
-    },
-    count : 0 //what if there ar multiple state variable
-  };
-  console.log("child-constructor")//play with console log for each lifecycle method
-}
-componentDidMount(){
-  this.timer = setInterval(() => {//create interval inside componentDidMount
-    console.log("Namaste op")
-  },5000)
-  console.log("child componentDidMount");
-}
-componentWillUnmount(){
-  clearInterval(this.timer);//use clearInterval to fix the issue caused by timer interval
-  console.log("child componentWillUnmount")
-}
+// Profileclass is class component
+class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInfo: {
+        name: "",
+        bio: "",
+      },
+    };
+    // console.log("Profile-Parent constructor");
+  }
+  
+  async componentDidMount() {
+    const response = await fetch(Github_API_User + Github_UserName, options); // Fetch the data from github User API
+    const json = await response.json();
+    this.setState({
+      userInfo: json,
+    });
+    // console.log("Profile-Parent componentDidMount");
+  }
 
+  componentDidUpdate() {
+    // console.log("Profile-Parent componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    // console.log("Profile-Parent componentWillUnmount");
+  }
   render() {
-    console.log("child-render")
+    const {userInfo} = this.state; // object destructuring for json data
+    // console.log("Profile-Parent - render");
     return (
-      <div>
-        <h1>tis is Restaurant</h1>
+      <div className="profile-class-container">
+        <div className="flex flex-col box-border shadow-slate-400 border-black">
+          <h1 className=" font-extrabold text-center text-2xl  ">About Me</h1>
+          <ProfileUserClass data={userInfo} />
+          {/* Passing props data (full json data) from parent to child */}
+        </div>
         
-        <h1>name:{this.props.name}</h1>{/** pass props from parent to it(child)*/}
-        <h2>Name : {this.state.userInfo.name}</h2>
-        <h3>Location : {this.state.userInfo.Location}</h3>
-        <h4>count : {this.state.count}</h4>
-        <button onClick={() =>{
-          this.setState({//use this.setState to update it
-             count:1
-          });
-          
-        }}>count</button>
       </div>
-    )
+    );
   }
 }
 
-export default ProfileClass;
+export default Profile;

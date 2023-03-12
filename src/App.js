@@ -14,19 +14,32 @@ import Login from "./components/Login";
 import RestaurantMenu from './components/RestaurantMenu';
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // for routing our page import createBrowserRouter and RouterProvider for providing router & Outlet for children component for nested routing
 import Shimmer from "./components/Shimmer";
+import useOnline from "./utils/useOnline";
+import { useNavigate } from "react-router-dom";
+import OfflinePage from './components/OfflinePage';
 
 const Cart = lazy(() => import("./components/Cart"));
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+  const isOnline = useOnline();
+  const navigate = useNavigate();
+
     return (
-      <Provider store={store}>
-      
-        <Header />
-        <Outlet />
-        <Footer />
-      
-    </Provider>
+      <>
+      {isOnline ? (
+        <>
+          <Provider store={store}>
+          
+            <Header />
+            <Outlet />
+            <Footer />
+          </Provider>
+        </>
+      ) : (
+        <OfflinePage />
+      )}
+    </>
   );
 };
    
@@ -41,6 +54,7 @@ const appRouter = createBrowserRouter([
         {
           path: "/",
           element: <Body />,
+          
         },
         {
           path: "about",

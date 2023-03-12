@@ -12,3 +12,24 @@ export const ITEM_IMG_CDN_URL =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
   
 export const shimmer_card_unit = 10;
+
+// Github - username
+export const Github_UserName = "shreypilot";
+export const Github_Repository_Name = "ApniRasoi";
+
+// Github API for User
+export const Github_API_User = "https://api.github.com/users/";
+
+// Social Media Links
+export const Linkedin_Link = "https://www.linkedin.com/in/shreya-kumari-2ba673202/";
+export const Twitter_Link = "https://twitter.com/Shreypilot";
+export const Github_Link = "https://github.com/shreypilot";
+export const Email_Link = "mailto:shreypilot28@gmail.com";
+
+// Github Authorization Token
+export const options = {
+  method: "GET",
+  headers: {
+    Authorization: "",
+  },
+};

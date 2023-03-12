@@ -1,13 +1,61 @@
-import React, { Component } from 'react'
+import { Component } from "react";
+import { SiGmail, SiLinkedin, SiGithub, SiTwitter } from "react-icons/si";
+import {
+  Github_Link,
+  Email_Link,
+  Linkedin_Link,
+  Twitter_Link,
+} from "../constants";
 
-export class SocialProfileClass extends Component {
+class SocialProfileClass extends Component {
+  constructor(props) {
+    super(props);
+    // console.log("SocialProfileClass child constructor");
+  }
+
+  async componentDidMount() {
+    // console.log("SocialProfileClass child componentDidMount");
+  }
+
+  componentDidUpdate() {
+    // console.log("SocialProfileClass child componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    // console.log("SocialProfileClass child componentWillUnmount");
+  }
+
   render() {
+    // console.log("SocialProfileClass child render");
     return (
-      <div>
-        
+      <div className="flex flex-row space-x-6 items-center justify-center">
+        <a
+          href={Linkedin_Link}
+          className="hover:bg-blue-500"
+          target="_blank"
+        >
+          <i>
+            <SiLinkedin />
+          </i>
+        </a>
+        <a href={Twitter_Link} className="hover:bg-blue-500 " target="_blank">
+          <i>
+            <SiTwitter />
+          </i>
+        </a>
+        <a href={Github_Link} className="icon-button github" target="_blank">
+          <i>
+            <SiGithub />
+          </i>
+        </a>
+        <a href={Email_Link} className="hover:bg-red-500">
+          <i>
+            <SiGmail />
+          </i>
+        </a>
       </div>
-    )
+    );
   }
 }
 
-export default SocialProfileClass
+export default SocialProfileClass;
