@@ -6,8 +6,7 @@ import "./Body.css";
 import { Link ,useNavigate } from "react-router-dom";
 import { RxCross2 } from 'react-icons/rx';
 import { filterData } from "../utils/helper";
-import useOnline from "../utils/useOnline";
-import OfflinePage from './OfflinePage';
+
 
 // Body Component for body section: It contain all restaurant cards
 const Body = () => {
@@ -16,8 +15,7 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const isOnline = useOnline();
-  const navigate = useNavigate();
+  
 
 
   // use useEffect for one time call getRestaurants using empty dependency array
