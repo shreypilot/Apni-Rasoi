@@ -2,7 +2,6 @@
   "name": "exploring-the-world-06",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:8080",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -13,6 +12,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "cors": "^2.8.5",
+    "exploring-the-world-06": "github:shreypilot/Apni-Rasoi",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -50,7 +51,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": { 
+  "devDependencies": {
     "@redux-devtools/core": "^3.13.1",
     "css": "^3.0.0",
     "tailwind": "^4.0.0",
