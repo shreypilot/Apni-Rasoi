@@ -37,18 +37,11 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist":  [
+    "last 10 versions"
+  ]
+    
+  ,
   "devDependencies": {
     "@redux-devtools/core": "^3.13.1",
     "css": "^3.0.0",

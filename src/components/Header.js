@@ -31,7 +31,7 @@ const Header = () => {
   console.log(cartItems);
 
   return (
-    <div className="flex justify-between h-20 bg-white shadow-lg">
+    <div className="flex justify-between h-20 bg-white shadow-lg  ">
       <Title />
       <div className="py-8">
         <ul className="flex justify-evenly space-x-4 font-bold text-gray-700  ">

@@ -66,8 +66,6 @@ const Body = () => {
 
   return (
     <>
-      
-        
         <div className="search-container">
           <input
             type="text"
