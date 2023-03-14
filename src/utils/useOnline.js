@@ -1,33 +1,36 @@
 import { useEffect, useState } from "react";
+
+
+
 const useOnline = () => {
 
-   const [isOnline, setIsOnline] = useState(true);
-
-
-   useEffect(() => {
-    const handleOnline = () =>{
+  const [isOnline, setIsOnline] = useState(window.navigator.onLine);
+  
+    useEffect(() => {
+      
+  
+      function handleOnlineStatus() {
         setIsOnline(true);
-    };
-    const handleOffline = () =>{
-        setIsOnline(false);
-    };
-    window.addEventListener("online",handleOnline);
-    window.addEventListener("offline",handleOffline);
+        //localStorage.setItem("isOnline", true);
+      }
+      function handleOfflineStatus() {
+          setIsOnline(false);
+          //localStorage.setItem("isOnline", false);
+          }
+      window.addEventListener("offline", handleOfflineStatus);
+      window.addEventListener("online", handleOnlineStatus);
+  
+      return () => {
+        window.removeEventListener("offline", handleOfflineStatus);
+        window.removeEventListener("online", handleOnlineStatus);
+      };
+    }, []);
 
 
-    return () => {
-        window.removeEventListener("online",handleOnline);
-        window.removeEventListener("offline",handleOffline);
-
-    }
-   },[]);
 
 
-
-
-  return isOnline;//return true or false
+return isOnline;//return true or false
 
 
 }
-
 export default useOnline;
