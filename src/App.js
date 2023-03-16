@@ -17,13 +17,20 @@ import Shimmer from "./components/Shimmer";
 import useOnline from "./utils/useOnline";
 import { useNavigate } from "react-router-dom";
 import OfflinePage from './components/OfflinePage';
-
+// import firebase from './firebase'
 const Cart = lazy(() => import("./components/Cart"));
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
   const isOnline = useOnline();
   const navigate = useNavigate();
+  // const msg=firebase.messaging();
+  //   msg.requestPermission().then(()=>{
+  //     return msg.getToken();
+  //   }).then((data)=>{
+  //     console.warn("token",data)
+  //   })
+
 
     return (
       <>
