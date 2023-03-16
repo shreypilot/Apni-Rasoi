@@ -17,8 +17,17 @@ self.addEventListener('install', function(event) {
         '/static/media/Rasoi.c40ec49f2d6ff170edb0.jpg',
         '/static/media/Rasoi%20copy.c40ec49f2d6ff170edb0.jpg',
         '../src/components/Footer.js',
-        '../src/index.js'
-        
+        '../src/index.js',
+        'build/static/css/main.a75e3a22.css',
+        'build/static/css/main.a75e3a22.css.map',
+        'build/static/js/604.bf3bd7af.chunk.js',
+        'build/static/js/604.bf3bd7af.chunk.js.map',
+        'build/static/js/980.f936bb41.chunk.js',
+        'build/static/js/980.f936bb41.chunk.js.map',
+        'build/static/js/main.1ac0a90e.js.LICENSE.txt',
+        'build/static/js/main.1ac0a90e.js.map',
+        'build/static/media/Rasoi copy.c40ec49f2d6ff170edb0.jpg',
+        'build/static/media/Rasoi.c40ec49f2d6ff170edb0.jpg'
       ]);
     })
   );
