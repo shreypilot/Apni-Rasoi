@@ -1,6 +1,4 @@
-
- 
- export function swDev()
+export function swDev()
  {
     function determineAppServerKey() {
     const vapidPublicKey =

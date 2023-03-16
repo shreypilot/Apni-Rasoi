@@ -100,7 +100,7 @@ const Body = () => {
         {allRestaurants?.length === 0 ? (
           <Shimmer />
         ) : (
-          <div className="flex flex-wrap p-4 m-4 justify-between space-y-4">
+          <div className="flex flex-wrap p-4 m-4 justify-between space-y-4 scroll-my-28">
             {/* We are mapping restaurants array and passing JSON array data to RestaurantCard component as props with unique key as restaurant.data.id */}
             {filteredRestaurants.map((restaurant) => {
               return (
