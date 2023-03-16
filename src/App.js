@@ -86,13 +86,14 @@ const appRouter = createBrowserRouter([
             </Suspense>
           ),
         },
+        {
+            path: "login",
+            element: <Login />,
+        },
         
       ],
     },
-    {
-      path: "login",
-      element: <Login />,
-    },
+    
   ]);
 
   function App() {
