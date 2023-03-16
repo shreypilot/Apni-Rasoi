@@ -17,7 +17,6 @@ const Body = () => {
   const [errorMessage, setErrorMessage] = useState("");
   
 
-
   // use useEffect for one time call getRestaurants using empty dependency array
   useEffect(() => {
     getRestaurants();
@@ -29,9 +28,10 @@ const Body = () => {
     try {
       const data = await fetch(swiggy_api_URL);
       const json = await data.json();
-      // updated state variable restaurants with Swiggy API data
+      // updated state variable restaurants with Swingy API data
       setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
       setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+      localStorage.setItem("getRestaurants",JSON.stringify(json?.data?.cards[2]?.data?.data?.cards))
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +64,7 @@ const Body = () => {
 
   return (
     <>
+    
         <div className="search-container">
           <input
             type="text"
@@ -111,7 +112,6 @@ const Body = () => {
             })}
           </div>
         )}
-        
     </>
       
     );

@@ -27,18 +27,20 @@ const AppLayout = () => {
 
     return (
       <>
-      {isOnline ? (
-        <>
+      
           <Provider store={store}>
           
             <Header />
-            <Outlet />
+              {isOnline ? (
+                <>
+                  <Outlet />
+                </>
+                  ) : (
+                  <OfflinePage />
+              )}  
             <Footer />
           </Provider>
-        </>
-      ) : (
-        <OfflinePage />
-      )}
+        
     </>
   );
 };
