@@ -9,4 +9,10 @@ root.render(
     <App />
   </React.StrictMode>
 );
-swDev();
+swDev()
+  .then(function (subscription) {
+    console.log("Subscription successful: ", subscription);
+  })
+  .catch(function (error) {
+    console.log("Subscription failed: ", error);
+  });

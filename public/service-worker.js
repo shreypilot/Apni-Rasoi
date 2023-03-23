@@ -15,7 +15,8 @@ const urlsToCache = [
   'build/static/js/604.bf3bd7af.chunk.js',
   'build/static/js/980.f936bb41.chunk.js',
   'build/static/js/main.1ac0a90e.js.LICENSE.txt',
-  'build/static/js/main.1ac0a90e.js'
+  'build/static/js/main.1ac0a90e.js',
+  '../src/constants.js'
 ];
 
 self.addEventListener('install', function(event) {
