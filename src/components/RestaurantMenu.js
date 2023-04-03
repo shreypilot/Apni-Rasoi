@@ -14,6 +14,12 @@ const RestaurantMenu = () => {
   const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
   const [menuItems, setMenuItems] = useState([]);
 
+  const dispatch = useDispatch();
+
+    const addFoodItem = (item) => {
+    dispatch(addItem(item));
+  };
+
   useEffect(() => {
     getRestaurantInfo(); // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
   }, []);
@@ -48,12 +54,7 @@ const RestaurantMenu = () => {
       console.log(error);
     }
   }
-    const dispatch = useDispatch();
-
-    const addFoodItem = (item) => {
-    dispatch(addItem(item));
-  };
-
+    
   return !restaurant ? (
     <Shimmer />
   ) : (

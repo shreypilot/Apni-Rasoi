@@ -10,23 +10,29 @@ const FoodItem = ({ name, description, imageId, price }) => {
     dispatch(removeItem());
   };
 
+  
+
   return (
-    <div className="w-56 p-2 m-4 shadow-lg bg-pink-200">
-      <img
-          className="rounded-md md:w-28 item-center m-4"
-          src={ITEM_IMG_CDN_URL + imageId}
-          alt={name}
-        />
-      <h2 className="font-bold text-xl m-4">{name}</h2>
-      <h3 className="m-4">{description}</h3>
-      <h4 className="m-4">Rupees: {price / 100}</h4>
-      <button
-        className="bg-green-400 p-3 ml-4 text-bold uppercase"
-        onClick={() => handleRemoveItem()}
-      >
-        Remove
-      </button>
-    </div>
+    <div className=" md:w-1/2 lg:w-56 p-2 md:p-4 lg:p-6 ">
+  <div className="shadow-lg bg-pink-200">
+    <img
+      className=" w-32 md:w-36 mx-auto my-4 pt-4"
+      src={ITEM_IMG_CDN_URL + imageId}
+      alt={name}
+    />
+    <h2 className="font-bold text-xl mx-8 my-2">{name}</h2>
+    <h3 className="mx-8 my-2">{description}</h3>
+    <h4 className="mx-8 my-2">Rupees: {price / 100}</h4>
+    <button
+      className="bg-green-400 p-3 mx-8 my-2 text-bold uppercase"
+      onClick={() => handleRemoveItem()}
+    >
+      Remove
+    </button>
+    
+  </div>
+</div>
+
   );
 };
 
