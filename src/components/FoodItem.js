@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { IMG_CDN_URL } from "../constants";
 
 const FoodItem = ({ name, description, cloudinaryImageId, price }) => {
