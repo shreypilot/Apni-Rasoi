@@ -7,8 +7,7 @@ import { addItem } from "../utils/CartSlice";
 import { useDispatch } from "react-redux";
 import useRestaurant from "../utils/useRestaurant";
 
-
-
+  
 const RestaurantMenu = () => {
    const {resId} = useParams();
    const restaurant = useRestaurant(resId);
