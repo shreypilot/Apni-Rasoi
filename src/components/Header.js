@@ -86,17 +86,17 @@ const Header = () => {
           <li>
             {isLoggedin ? (
               <button
+                className="hover:bg-green-500 hover:text-white bg-green-500 w-16 h-8 m-1 p-2 rounded-md"
+                onClick={() => navigate("/login")}
+              >Login</button>
+            ) : (
+              <button
                 className="hover:bg-red-500 hover:text-white bg-green-500 w-16 h-8 m-1 p-2 rounded-md"
                 onClick={() => setIsLoggedin(false)}
               >
                 Logout
               </button>
-            ) : (
-              <button
-                className="hover:bg-green-500 hover:text-white bg-green-500 w-16 h-8 m-1 p-2 rounded-md"
-                onClick={() => setIsLoggedin(true)}
-              >Login</button>
-            )}
+            ) }
           </li>
         </ul>
       </div>

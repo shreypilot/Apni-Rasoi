@@ -42,45 +42,56 @@ const navigate = useNavigate();
               handleBlur,
               handleSubmit,
             }) => (
-              <div className=" flex flex-col mt-24 ml-96 my-auto box-border border-black  items-center justify-center bg-blue-400 border-8 w-96 h-96 shadow-md  ">
-                <div className="flex flex-col text-center  relative px-6 py-10">
-               {/* Passing handleSubmit parameter tohtml form onSubmit property */}
-                  <form noValidate onSubmit={handleSubmit}>
-                    <h1 className="text-black font-bold  uppercase" >Login</h1>
-                  {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
-                    <input
-                      type="email"
-                      name="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email}
-                      placeholder="Enter email id / username"
-                      className=" w-72 p-4 mt-24 border border-black "
-                      id="email"
-                    />
-                    {/* If validation is not passed show errors */}
-                    <p className="error">
-                      {errors.email && touched.email && errors.email}
-                    </p>
-                     {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
-                    <input
-                      type="password"
-                      name="password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.password}
-                      placeholder="Enter password"
-                      className="m-2 p-4 w-72 border border-black "
-                    />
-                     {/* If validation is not passed show errors */}
-                    <p className="error">
-                      {errors.password && touched.password && errors.password}
-                    </p>
-                    {/* Click on submit button to submit the form */}
-                    <button type="submit" className="bg-green-800 p-2 m-2 w-24 uppercase text-white rounded-sm">Login</button>
-                  </form>
+              <div className="flex flex-col justify-center items-center mt-10 md:mt-24 bg-gray-100 h-screen w-screen">
+                  <div className="box-border border-black bg-blue-400 border-8 shadow-md w-full md:w-96">
+                    <div className="relative px-6 py-10 text-center">
+                      {/* Passing handleSubmit parameter to html form onSubmit property */}
+                      <form noValidate onSubmit={handleSubmit}>
+                        <h1 className="text-black font-bold uppercase mb-6">Login</h1>
+                        {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
+                        <div className="mb-4">
+                          <label className="block text-black font-bold mb-2" htmlFor="email">Email / Username</label>
+                          <input
+                            type="email"
+                            name="email"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                            placeholder="Enter your email or username"
+                            className="w-full p-4 border border-black rounded-md"
+                            id="email"
+                          />
+                          {/* If validation is not passed show errors */}
+                          {errors.email && touched.email && (
+                            <p className="text-red-500 text-xs italic">{errors.email}</p>
+                          )}
+                        </div>
+                        {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
+                        <div className="mb-6">
+                          <label className="block text-black font-bold mb-2" htmlFor="password">Password</label>
+                          <input
+                            type="password"
+                            name="password"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+                            placeholder="Enter your password"
+                            className="w-full p-4 border border-black rounded-md"
+                            id="password"
+                          />
+                          {/* If validation is not passed show errors */}
+                          {errors.password && touched.password && (
+                            <p className="text-red-500 text-xs italic">{errors.password}</p>
+                          )}
+                        </div>
+                        {/* Click on submit button to submit the form */}
+                        <button type="submit" className="bg-green-800 text-white uppercase py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
+                          Login
+                        </button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-              </div>
             )}
           </Formik>
         </>
