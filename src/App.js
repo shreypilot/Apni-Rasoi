@@ -1,14 +1,13 @@
 
 import ReactDOM from 'react-dom/client';
 import './App.css';
-import { Provider } from "react-redux";
+import { useSelector } from "react-redux";
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
 import Profile from "./components/ProfileClass";
-import store from "./utils/store";
 import Contact from "./components/Contact";
 import Login from "./components/Login";
 import RestaurantMenu from './components/RestaurantMenu';
@@ -17,7 +16,8 @@ import Shimmer from "./components/Shimmer";
 import useOnline from "./utils/useOnline";
 import { useNavigate } from "react-router-dom";
 import OfflinePage from './components/OfflinePage';
-import Sidebar from './components/Sidebar';
+//import Sidebar from './components/Sidebar';
+
 // import firebase from './firebase'
 const Cart = lazy(() => import("./components/Cart"));
 const About = lazy(() => import("./components/About"));
@@ -25,20 +25,19 @@ const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
   const isOnline = useOnline();
   const navigate = useNavigate();
-  // const msg=firebase.messaging();
-  //   msg.requestPermission().then(()=>{
-  //     return msg.getToken();
-  //   }).then((data)=>{
-  //     console.warn("token",data)
-  //   })
+  const isSignIn = useSelector((state) => state.app.isSignIn);
+  console.log("isSignIn in AppLayout:", isSignIn);
 
 
     return (
       <>
-      
-        <Provider store={store} >
-          <div className='flex'>
-              <div>
+        
+        {isSignIn ? (
+          <div className='bg-transparent '>
+            <Login />
+          </div>
+        ):(  
+          <>
               <Header />
                 {isOnline ? (
                   <>
@@ -48,12 +47,11 @@ const AppLayout = () => {
                     <OfflinePage />
                 )}  
               <Footer />
-            </div>
-            <div>
-              <Sidebar />
-            </div>
-          </div>    
-        </Provider>
+          </> 
+            
+          )
+        }    
+        
         
     </>
   );
