@@ -17,7 +17,7 @@ import useOnline from "./utils/useOnline";
 import { useNavigate } from "react-router-dom";
 import OfflinePage from './components/OfflinePage';
 //import Sidebar from './components/Sidebar';
-
+import Homepage from './components/Homepage';
 // import firebase from './firebase'
 const Cart = lazy(() => import("./components/Cart"));
 const About = lazy(() => import("./components/About"));
@@ -33,20 +33,12 @@ const AppLayout = () => {
       <>
         
         {isSignIn ? (
-          <div className='bg-transparent '>
+          
             <Login />
-          </div>
+          
         ):(  
           <>
-              <Header />
-                {isOnline ? (
-                  <>
-                    <Outlet />
-                  </>
-                    ) : (
-                    <OfflinePage />
-                )}  
-              <Footer />
+            <Homepage />
           </> 
             
           )
@@ -68,7 +60,7 @@ const appRouter = createBrowserRouter([
         {
           path: "/",
           element: <Body />,
-          
+
         },
         {
           path: "about",
@@ -91,6 +83,7 @@ const appRouter = createBrowserRouter([
           element: <RestaurantMenu />,
         },
         {
+          
           path: "/cart",
           element: (
             <Suspense fallback={<Shimmer />}>
@@ -98,14 +91,14 @@ const appRouter = createBrowserRouter([
             </Suspense>
           ),
         },
-        {
-            path: "login",
-            element: <Login />,
-        },
+        
         
       ],
     },
-    
+    {
+            path: "/login",
+            element: <Login />,
+    },
   ]);
 
   function App() {
