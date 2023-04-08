@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from "react-router-dom";
 import useOnline from "../utils/useOnline";
-import { useSelector } from "react-redux";
-
+import { useSelector,useDispatch } from "react-redux";
+import { BiUserCircle  } from 'react-icons/bi';
+import { toggleSignIn } from '../utils/appSlice';
 
 
 // Title component for display logo
@@ -23,14 +24,22 @@ const Title = () => (
 // Header component for header section: Logo, Nav Items
 const Header = () => {
   // use useState for user logged in or logged out
-  const [isLoggedin, setIsLoggedin] = useState(true);
+  //const [isLoggedin, setIsLoggedin] = useState(true);
   const isOnline = useOnline();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const dispatch = useDispatch();
+  const toggleSignInHandler = () => {
+    console.log("toggleSignInHandler called");
+
+    dispatch(toggleSignIn())
+  }
+
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
 
+  const newLocal = "✅";
   return (
     <div className="md:shadow-lg md:h-20 ">
       <div className="md:flex">
@@ -80,24 +89,15 @@ const Header = () => {
               {cartItems.length}
             </Link>
           </li>
-          <h1 className="cursor-pointer p-2">
-            {isOnline ? "✅" : "🔴"}
+          
+          <li
+            className=" flex cursor-pointer mt-4  "
+            onClick={() => toggleSignInHandler()}
+          > <BiUserCircle className="mr-1" />Sign In</li>
+            
+          <h1 className="cursor-pointer mt-4 selection:">
+            {isOnline ? newLocal : "🔴"}
           </h1>
-          <li>
-            {isLoggedin ? (
-              <button
-                className="hover:bg-green-500 hover:text-white bg-green-500 w-16 h-8 m-1 p-2 rounded-md"
-                onClick={() => navigate("/login")}
-              >Login</button>
-            ) : (
-              <button
-                className="hover:bg-red-500 hover:text-white bg-green-500 w-16 h-8 m-1 p-2 rounded-md"
-                onClick={() => setIsLoggedin(false)}
-              >
-                Logout
-              </button>
-            ) }
-          </li>
         </ul>
       </div>
     </div>

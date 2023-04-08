@@ -1,100 +1,67 @@
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
-// create a schema for validation
-const schema = Yup.object().shape({
-    email: Yup.string()
-      .required("Email is a required field")
-      .email("Invalid email format"),
-    password: Yup.string()
-      .required("Password is a required field")
-      .min(8, "Password must be at least 8 characters"),
-  });
+import React from 'react';
 
-const Login = () => {
-const navigate = useNavigate();
 
-  function handleNavigate(values) {
-    // Alert the input values of the form that we filled
-    alert(values);
-    // setTimeout for navigate from login page to home page
-    setTimeout(() => {
-      navigate("/");
-    }, 0);
-  }
+function Login() {
+  //early return pattern
+  return (
     
-    return (
-        <>
-          {/* Wrapping form inside formik tag and passing our schema to validationSchema prop */}
-          <Formik
-            validationSchema={schema}
-            initialValues={{ email: "", password: "" }}
-            onSubmit={(values) => {
-              // Alert the input values of the form that we filled
-              alert(JSON.stringify(values));
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-            }) => (
-              <div className="flex flex-col justify-center items-center mt-10 md:mt-24 bg-gray-100 h-screen w-screen">
-                  <div className="box-border border-black bg-blue-400 border-8 shadow-md w-full md:w-96">
-                    <div className="relative px-6 py-10 text-center">
-                      {/* Passing handleSubmit parameter to html form onSubmit property */}
-                      <form noValidate onSubmit={handleSubmit}>
-                        <h1 className="text-black font-bold uppercase mb-6">Login</h1>
-                        {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
-                        <div className="mb-4">
-                          <label className="block text-black font-bold mb-2" htmlFor="email">Email / Username</label>
-                          <input
-                            type="email"
-                            name="email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.email}
-                            placeholder="Enter your email or username"
-                            className="w-full p-4 border border-black rounded-md"
-                            id="email"
-                          />
-                          {/* If validation is not passed show errors */}
-                          {errors.email && touched.email && (
-                            <p className="text-red-500 text-xs italic">{errors.email}</p>
-                          )}
-                        </div>
-                        {/* Our input html with passing formik parameters like handleChange, values, handleBlur to input properties */}
-                        <div className="mb-6">
-                          <label className="block text-black font-bold mb-2" htmlFor="password">Password</label>
-                          <input
-                            type="password"
-                            name="password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.password}
-                            placeholder="Enter your password"
-                            className="w-full p-4 border border-black rounded-md"
-                            id="password"
-                          />
-                          {/* If validation is not passed show errors */}
-                          {errors.password && touched.password && (
-                            <p className="text-red-500 text-xs italic">{errors.password}</p>
-                          )}
-                        </div>
-                        {/* Click on submit button to submit the form */}
-                        <button type="submit" className="bg-green-800 text-white uppercase py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50">
-                          Login
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-            )}
-          </Formik>
-        </>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Sign up for an account
+          </h2>
+        </div>
+        <form className="mt-8 space-y-6" action="#" method="POST">
+          <input type="hidden" name="remember" defaultValue="true" />
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="name" className="sr-only">
+                Full name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Full name"
+              />
+            </div>
+            <div>
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="email-address"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Email address"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    
       );
     };
     export default Login;

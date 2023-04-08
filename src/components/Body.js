@@ -6,6 +6,7 @@ import "./Body.css";
 import { Link ,useNavigate } from "react-router-dom";
 import { RxCross2 } from 'react-icons/rx';
 import { filterData } from "../utils/helper";
+//import Sidebar from './Sidebar'
 
 
 // Body Component for body section: It contain all restaurant cards
@@ -64,7 +65,8 @@ const Body = () => {
 
   return (
     <>
-    
+      
+      <div>
         <div className="search-container">
           <input
             type="text"
@@ -112,7 +114,13 @@ const Body = () => {
             })}
           </div>
         )}
+      </div>
+       
+        
+     
     </>
+      
+        
       
     );
     

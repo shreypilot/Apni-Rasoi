@@ -16,7 +16,7 @@ export const FETCH_MENU_URL ="https://corsanywhere.herokuapp.com/https://www.swi
 export const ITEM_IMG_CDN_URL =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
   
-export const shimmer_card_unit = 10;
+export const shimmer_card_unit = 24;
 
 // Github - username
 export const Github_UserName = "shreypilot";

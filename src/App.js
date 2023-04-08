@@ -17,6 +17,7 @@ import Shimmer from "./components/Shimmer";
 import useOnline from "./utils/useOnline";
 import { useNavigate } from "react-router-dom";
 import OfflinePage from './components/OfflinePage';
+import Sidebar from './components/Sidebar';
 // import firebase from './firebase'
 const Cart = lazy(() => import("./components/Cart"));
 const About = lazy(() => import("./components/About"));
@@ -35,18 +36,24 @@ const AppLayout = () => {
     return (
       <>
       
-          <Provider store={store}>
-          
-            <Header />
-              {isOnline ? (
-                <>
-                  <Outlet />
-                </>
-                  ) : (
-                  <OfflinePage />
-              )}  
-            <Footer />
-          </Provider>
+        <Provider store={store} >
+          <div className='flex'>
+              <div>
+              <Header />
+                {isOnline ? (
+                  <>
+                    <Outlet />
+                  </>
+                    ) : (
+                    <OfflinePage />
+                )}  
+              <Footer />
+            </div>
+            <div>
+              <Sidebar />
+            </div>
+          </div>    
+        </Provider>
         
     </>
   );
