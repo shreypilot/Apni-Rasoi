@@ -24,7 +24,7 @@ const Title = () => (
 // Header component for header section: Logo, Nav Items
 const Header = () => {
   // use useState for user logged in or logged out
-  //const [isLoggedin, setIsLoggedin] = useState(true);
+  const [isLoggedin, setIsLoggedin] = useState(false);
   const isOnline = useOnline();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,11 +89,18 @@ const Header = () => {
               {cartItems.length}
             </Link>
           </li>
+          {isLoggedin?
+              (<li>Logout</li>):
+                    (
+                      <li
+                        className=" flex cursor-pointer mt-4  "
+                        onClick={() => toggleSignInHandler()}
+                      > <BiUserCircle className="mr-1" />Log In</li>
+                      )
           
-          <li
-            className=" flex cursor-pointer mt-4  "
-            onClick={() => toggleSignInHandler()}
-          > <BiUserCircle className="mr-1" />Sign In</li>
+
+          }
+         
             
           <h1 className="cursor-pointer mt-4 selection:">
             {isOnline ? newLocal : "🔴"}
