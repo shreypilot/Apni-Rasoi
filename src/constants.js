@@ -5,8 +5,7 @@ export const IMG_CDN_URL =
 
 // Swiggy url to get Restaurant data
 export const swiggy_api_URL =
-"https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
-
+"https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.242453&lng=86.9842256&page_type=DESKTOP_WEB_LISTING";
 
 //menu url of each restaurant
 export const FETCH_MENU_URL ="https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
