@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="flex justify-between">
           <div className="flex flex-col items-center text-gray-400">
             <Link to="/" className="text-2xl font-bold text-white mb-4">
-              Apni Rasoi
+              Apni Rasoi😋
             </Link>
             <div className="flex items-center">
               <p className="mr-4">{t('language')}: </p>
