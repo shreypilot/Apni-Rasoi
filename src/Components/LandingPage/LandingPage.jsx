@@ -628,7 +628,7 @@ export function LandingPage() {
           widthy="124px"
           heighty="188px"
           texty="Lightning-Fast Delivery"
-          para="Experience Swiggy's superfast delivery for food delivered fresh & on time
+          para="Experience Petu superfast delivery for food delivered fresh & on time
           "
         />
       </div>
