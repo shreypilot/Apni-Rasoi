@@ -26,7 +26,6 @@ export function Navbar() {
   const [verificationId, setVerificationId] = useState("");
   const [otp, setOtp] = useState(false);
   const [otp_valid, setOtp_valid] = useState("");
-
   const location = JSON.parse(localStorage.getItem("Location"));
   let cart = JSON.parse(localStorage.getItem("Cart")) || [];
   const navigate = useNavigate();
@@ -38,6 +37,9 @@ export function Navbar() {
       setsignIn(true);
     }
   }, []);
+  const handleLogoClick = () => {
+    navigate("/restaurants");
+  };
 
   useEffect(() => {
     setLen(cart.length);
@@ -50,7 +52,12 @@ export function Navbar() {
   useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user_details"));
     let id = JSON.parse(localStorage.getItem("verificationId"));
-    if (user.name == "" || user.email == "" || user.number == "" || id.verificationId == "") {
+    if (
+      user.name == "" ||
+      user.email == "" ||
+      user.number == "" ||
+      id.verificationId == ""
+    ) {
       let temp = {
         name: name,
         email: email,
@@ -78,7 +85,6 @@ export function Navbar() {
       });
     setOtp(false);
     setisDraweropen(false);
-
   }
 
   function handleSubmit_Otp_login(e) {
@@ -385,7 +391,7 @@ export function Navbar() {
       )}
 
       <nav className="navbar">
-        <img src={Logo} alt="" className="logo" />
+        <img src={Logo} alt="" className="logo" onClick={handleLogoClick} />
         <div className="div1_nav">
           <p className="other">Other</p>
           <div className="location">
