@@ -1,22 +1,17 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
-import {swDev } from './swDev';
-import { Provider } from "react-redux";
-import store from "./utils/store";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store} >
+  <BrowserRouter>
+  <React.StrictMode>
     <App />
-  </Provider>
-    
- 
+    </React.StrictMode>
+    </BrowserRouter>
 );
-swDev()
-  .then(function (subscription) {
-    console.log("Subscription successful: ", subscription);
-  })
-  .catch(function (error) {
-    console.log("Subscription failed: ", error);
-  });
+
+

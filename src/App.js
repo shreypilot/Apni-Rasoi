@@ -1,137 +1,32 @@
-
-import ReactDOM from 'react-dom/client';
-import './App.css';
-import { useSelector } from "react-redux";
-import React, { lazy, Suspense, useEffect, useState } from "react";
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
-import Error from "./components/Error";
-import Profile from "./components/ProfileClass";
-import Contact from "./components/Contact";
-import Login from "./components/Login";
-import RestaurantMenu from './components/RestaurantMenu';
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // for routing our page import createBrowserRouter and RouterProvider for providing router & Outlet for children component for nested routing
-import Shimmer from "./components/Shimmer";
-import useOnline from "./utils/useOnline";
-import { useNavigate } from "react-router-dom";
-import OfflinePage from './components/OfflinePage';
-//import Sidebar from './components/Sidebar';
-import Homepage from './components/Homepage';
-// import firebase from './firebase'
-const Cart = lazy(() => import("./components/Cart"));
-const About = lazy(() => import("./components/About"));
-
-const AppLayout = () => {
-  const isOnline = useOnline();
-  const navigate = useNavigate();
-  const isSignIn = useSelector((state) => state.app.isSignIn);
-  console.log("isSignIn in AppLayout:", isSignIn);
-
-
-    return (
-      <>
-        
-        {isSignIn ? (
-          
-            <Login />
-          
-        ):(  
-          <>
-            <Homepage />
-          </> 
-            
-          )
-        }    
-        
-        
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { LandingPage } from "./Components/LandingPage/LandingPage";
+import "./App.css";
+import { Food_Main } from "./Components/RestaurantPage/Food_Main";
+import { Food_Detail } from "./Components/RestaurantPage/Food_Detail";
+import { PaymentDetails } from "./Components/CheckoutPage/PaymentDetails";
+import {ThankYou} from "./Components/Thankyou/Thankyou";
+function App() {
+  if (!localStorage.getItem("Cart")) {
+    localStorage.setItem("Cart", JSON.stringify([]))
+  }
+  if (!localStorage.getItem("user_details")) {
+    localStorage.setItem("user_details", JSON.stringify({"name": "", "email": "", "number": ""}))
+  }
+  if (!localStorage.getItem("verificationId")) {
+    localStorage.setItem("verificationId", JSON.stringify({"verificationId":""}))
+  }
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/restaurants" element={<Food_Main />} />
+        <Route path="/:food/:id" element={<Food_Detail />} />
+        <Route path="/payment" element={<PaymentDetails />} />
+        <Route path="/thankyou" element={<ThankYou />} />
+      </Routes>
     </>
   );
-};
-   
-
-const appRouter = createBrowserRouter([
-    {
-      path: "/", // show path for routing
-      element: <AppLayout />, // show component for particular path
-      errorElement: <Error />, // show error component for path is different
-      children: [
-        // show children component for routing
-        {
-          path: "/",
-          element: <Body />,
-
-        },
-        {
-          path: "about",
-          element: (
-            <Suspense fallback={<h1>Loading....</h1>}>
-              <About />
-            </Suspense>
-          ),
-          children: [{ // nested routing
-            path: "profile",
-            element: <Profile />,
-          }]
-        },
-        {
-          path: "contact",
-          element: <Contact />,
-        },
-        {
-          path: "restaurant/:resId",
-          element: <RestaurantMenu />,
-        },
-        {
-          
-          path: "/cart",
-          element: (
-            <Suspense fallback={<Shimmer />}>
-              <Cart />
-            </Suspense>
-          ),
-        },
-        
-        
-      ],
-    },
-    {
-            path: "/login",
-            element: <Login />,
-    },
-  ]);
-
-  function App() {
-    return (
-   <div>
-        <RouterProvider router={appRouter} />
-
-        {/**
-     * Header
-     *  .Logo
-     *  .NavItems(on RightSide)
-     *  -cart
-     * 
-     * Body
-     *  .SearchBar
-     *  .RestrauntList
-     *    .ResturantCard
-     *      .Image
-     *      .Name
-     *      .Rating 
-     *      .Cusines
-     * 
-     * Footer
-     *  .Copyright 
-     *  .Link to social media
-     */}
-    </div>
-    
-  );
 }
-    
+
 export default App;
-
-
- 
- 
