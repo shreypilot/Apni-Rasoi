@@ -9,7 +9,7 @@ import Discount from "../Assets/discount.svg";
 import CloseIcon from "@mui/icons-material/Close";
 import { Drawer, Box } from "@mui/material";
 import { Navbar } from "./navbar";
-import ScrollToTop from "react-scroll-to-top";
+// import ScrollToTop from "react-scroll-to-top";
 import { useWindowScroll } from "react-use";
 import { useNavigate } from "react-router-dom";
 import { PreLoader } from "../PreLoader";
@@ -140,7 +140,7 @@ function Food_Main() {
       <div className="scroll-container">
         <div className="indicator" style={{ width: `${scrolled}%` }}></div>
       </div>{" "}
-      <ScrollToTop smooth color="#fc8019" />
+      {/* <ScrollToTop smooth color="#fc8019" /> */}
       <Navbar />
       <Drawer
         anchor="right"

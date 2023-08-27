@@ -8,7 +8,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import ScrollToTop from "react-scroll-to-top";
+// import ScrollToTop from "react-scroll-to-top";
 import { useWindowScroll } from "react-use";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
@@ -145,7 +145,7 @@ export const Food_Detail = () => {
       <div className="scroll-container">
         <div className="indicator" style={{ width: `${scrolled}%` }}></div>
       </div>{" "}
-      <ScrollToTop smooth color="#fc8019" />
+      {/* <ScrollToTop smooth color="#fc8019" /> */}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
