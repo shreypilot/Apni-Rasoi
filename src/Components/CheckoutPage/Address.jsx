@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import "./Address.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useNavigate } from "react-router-dom";
-import Logo from "../Assets/swiggy.svg";
+import Logo from "../Assets/petu-image.png";
 import Firebase from "../../Firebase";
 let data = ["1234 5678 1764 5678", "shreya kumari", "10/25", "123"];
 

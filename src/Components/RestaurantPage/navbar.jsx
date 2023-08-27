@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../Assets/swiggy.svg";
+import Logo from "../Assets/petu-logo.svg";
 import Arrow from "../Assets/arrow.svg";
 import Cart from "../Assets/cart.png";
 import Search from "../Assets/search.svg";
