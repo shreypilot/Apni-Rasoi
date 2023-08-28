@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Drawer, Box } from "@mui/material";
 import Button from "@mui/material/Button";
@@ -45,8 +45,8 @@ export const Address = () => {
   const [verificationId, setVerificationId] = useState("");
   const [otp_valid, setOtp_valid] = useState("");
   const [user_verified, setUser_verified] = useState(false);
-
   const navigate = useNavigate();
+  const [amount, setAmount] = useState(100);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -59,30 +59,43 @@ export const Address = () => {
       return;
     }
 
-    const data = await fetch("https://meeshodb.herokuapp.com/razorpay", {
+
+    
+    fetch("https://dashboard.razorpay.com/app/webhooks/MVPbXkWsuhDkxU", {
       method: "POST",
       body: JSON.stringify({
         amount: localStorage.getItem("total") || 100,
       }),
-    }).then((t) => t.json());
-    let t = JSON.stringify(localStorage.getItem("total")) || 100;
+    })
+      .then((response) => response.json())
+      .then((data) => {
+          setAmount(data.amount);
+      })
+      .catch((error) => {
+        console.error("Error fetching amount:", error);
+      });
+   
+    
+
     const options = {
-      key: "rzp_test_OnubQmqY8GahSs",
-      currency: data.currency,
-      amount: t * 100,
+      key: "rzp_test_d8pDgQEKhX2ArV",
+      // key_secret:"ALmpkKF6HHm2OZhcteFiEHJs",
+      currency: "INR",
+      amount: amount * 100,
       order_id: data.id,
-      name: "Swiggy",
+      name: "Petu",
       description: "Thank you for Ordering",
-      image: "https://images2.imgbox.com/45/f9/i5AetHvK_o.jpg",
+      image: { Logo},
       handler: function (response) {
         alert("Payment request was successfull !!");
       },
       prefill: {
-        name: "Tarun Kashyap",
-        email: "shreypilot28@gmail.com",
+        name: "Petu",
+        email: "champjhuie28@gmail.com",
         phone_number: "7256998409",
       },
     };
+    console.log(data)
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
     navigate("/thankyou");
